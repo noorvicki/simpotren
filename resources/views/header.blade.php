@@ -97,7 +97,7 @@
               <a href="/data_pengajar">Data Pengajar</a>
             </li>
             <li class="mb-2">
-              <a href="/data_non_pengajar">Data Non Pengajar</a>
+              <a href="/data_pegawai">Data Non Pengajar</a>
             </li>
           </ul>
         </li>

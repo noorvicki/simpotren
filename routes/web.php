@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Akademik
+//=================== Akademik ======================
 Route::get('/absensi', function () {
     return view('akademik.absensi');
 });
@@ -35,7 +35,7 @@ Route::get('/raport_santri', function () {
     return view('akademik.raport_santri');
 });
 
-//Dashboard
+//==================== Dashboard ======================
 Route::get('/data_gedung', function () {
     return view('dashboard.data_gedung');
 });
@@ -49,15 +49,17 @@ Route::get('/data_santri', function () {
     return view('dashboard.data_santri');
 });
 
-//kepegawaian
-Route::get('/data_non_pengajar', function () {
-    return view('kepegawaian.data_non_pengajar');
-});
+// ==================== kepegawaian ====================
+//pegawai
+Route::get('/data_pegawai','PegawaiController@index');
+Route::post('/data_pegawai/store','PegawaiController@store');
+
+//pengajar
 Route::get('/data_pengajar', function () {
     return view('kepegawaian.data_pengajar');
 });
 
-//konfigurasi
+//=====================konfigurasi=======================
 Route::get('/admin', function () {
     return view('konfigurasi.admin');
 });
@@ -65,7 +67,7 @@ Route::get('/superadmin', function () {
     return view('konfigurasi.superadmin');
 });
 
-// pembayaran
+//===================== pembayaran ======================
 Route::get('/laporan_pembayaran', function () {
     return view('pembayaran.laporan_pembayaran');
 });
