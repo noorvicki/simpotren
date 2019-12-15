@@ -23,28 +23,27 @@
       <div class="container-fluid">
         <button class="btn btn-primary mb-4" data-toggle="modal" data-target="#ModalTambah">Tambah Data</button>
         <table class="table" id="table_id">
-          <thead>
+         <thead>
             <tr>
               <th>NIP</th>
               <th>Nama</th>
               <th>Alamat</th>
               <th>No Telp / HP</th>
-              <th>Email</th>
-              <th>Password</th>
-              <th>Bidang ajar</th>
+              <th>staff_bagian</th>
+              <th>jenis_kelamin</th>
               <th>Foto</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
+            @foreach($pengajar as $pg)
             <tr>
-              <td>1650104</td>
-              <td>Moch. Ilham Afandi</td>
-              <td>Malang</td>
-              <td>0823333</td>
-              <td>ilham@mail.com</td>
-              <td>password</td>
-              <td>testestes</td>
+              <td>{{$pg->id}}</td>
+              <td>{{$pg->nama}}</td>
+              <td>{{$pg->alamat}}</td>
+              <td>{{$pg->telepon}}</td>
+              <td>{{$pg->bidang_ajar}}</td>
+              <td>{{$pg->jenis_kelamin}}</td>
               <td><img src="" alt="#"></td>
               <td>
                 <a href="#" data-toggle="modal" data-target="#ModalEdit" class="icon-edit pr-3">
@@ -55,6 +54,7 @@
                 </a>
               </td>
             </tr>
+            @endforeach
           </tbody>
         </table>
       </div>
@@ -136,55 +136,65 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label for="NIP">NIP</label>
-              <input type="text" class="form-control" id="NIP" placeholder="Masukkan NIP">
-            </div>
-            <div class="form-group">
-              <label for="nama">Nama</label>
-              <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama">
-            </div>
-            <div class="form-group">
-              <label for="alamat">Alamat</label>
-              <input type="text" class="form-control" id="alamat" placeholder="Masukkan Alamat">
-            </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="text" class="form-control" id="email" placeholder="Masukkan Email">
-            </div>
-            <div class="form-group">
-              <label for="nomorHp">No Telp / HP</label>
-              <input type="text" class="form-control" id="nomorHp" placeholder="Masukkan No Telp / HP">
-            </div>
-            <div class="form-group">
-              <label for="bidang">Kamar</label>
-              <select class="custom-select">
-                <option selected>Pilih bidang ajar</option>
-                <option value="1">Matematika</option>
-                <option value="2">Biologi</option>
-                <option value="3">Fisika</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="nama">Foto</label>
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="Filefoto">Upload</span>
-                </div>
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="Filefoto">
-                  <label class="custom-file-label" for="inputGroupFile01">Pilih Foto</label>
-                </div>
+        <form action="/data_pengajar/store" method="POST">
+          {{csrf_field()}}
+          <div class="modal-body">
+              <div class="form-group">
+                <label for="NIP">NIP</label>
+                <input type="text" class="form-control" id="NIP" name="NIP" placeholder="Masukkan NIP">
               </div>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Simpan</button>
-        </div>
+              <div class="form-group">
+                <label for="pswd">Password</label>
+                <input type="text" class="form-control" id="pswd" name="pswd" placeholder="Masukkan Password Baru">
+              </div>
+              <div class="form-group">
+                <label for="nama">Nama</label>
+                <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama">
+              </div>
+              <div class="form-group">
+                <label for="alamat">Alamat</label>
+                <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat">
+              </div>
+              <div class="form-group">
+                <label for="nomorHp">No Telp / HP</label>
+                <input type="text" class="form-control" id="nomorHp" name="nomorHp" placeholder="Masukkan No Telp / HP">
+              </div>
+              <div class="form-group">
+                <label for="bidang">Bidang Ajar</label>
+                <select id="jk"name="jk" class="custom-select">
+                  <option disabled >Pilih Bidang Ajar</option>
+                  @foreach($ajar as $aj)
+                  <option value="{{$aj->nama_mapel}}">{{$aj->nama_mapel}}</option>
+                  @endforeach
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="jk">Jenis Kelamin</label>
+                <select id="jk"name="jk" class="custom-select">
+                  <option disabled >Pilih Jenis Kelamin</option>
+                  <option value="Laki-Laki">Laki-Laki</option>
+                  <option value="Perempuan">Perempuan</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="foto">Foto</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="Filefoto">Upload</span>
+                  </div>
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="Filefoto">
+                    <label class="custom-file-label" for="inputGroupFile01">Pilih Foto</label>
+                  </div>
+                </div>
+
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <input type="submit" value="Simpan" class="btn btn-primary">
+          </div>
+        </form> 
       </div>
     </div>
   </div>

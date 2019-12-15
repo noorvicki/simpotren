@@ -55,9 +55,8 @@ Route::get('/data_pegawai','PegawaiController@index');
 Route::post('/data_pegawai/store','PegawaiController@store');
 
 //pengajar
-Route::get('/data_pengajar', function () {
-    return view('kepegawaian.data_pengajar');
-});
+Route::get('/data_pengajar','PengajarController@index');
+Route::post('/data_pengajar/store','PengajarController@store');
 
 //=====================konfigurasi=======================
 Route::get('/admin', function () {
