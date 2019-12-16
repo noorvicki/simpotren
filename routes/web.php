@@ -73,3 +73,8 @@ Route::get('/laporan_pembayaran', function () {
 Route::get('/pembayaran', function () {
     return view('pembayaran.pembayaran');
 });
+
+//===================== Pendaftaran ======================
+Route::get('/pendaftaran', function () {
+    return view('pendaftaran.pendaftaran');
+});
