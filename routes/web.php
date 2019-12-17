@@ -75,6 +75,6 @@ Route::get('/pembayaran', function () {
 });
 
 //===================== Pendaftaran ======================
-Route::get('/pendaftaran', function () {
-    return view('pendaftaran.pendaftaran');
-});
+Route::get('/pendaftaran', 'PendaftaranController@index');
+Route::post('/pendaftaran/edit', 'PendaftaranController@edit');
+Route::post('/pendaftaran/hapus', 'PendaftaranController@hapus');
