@@ -24,4 +24,8 @@ class PengajarController extends Controller
     	]);
     	return redirect('/data_pengajar');
     }
+    public function hapus($id){
+        Pengajar::find($id)->delete();
+        return redirect ('/data_pengajar');
+    }
 }

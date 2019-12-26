@@ -53,10 +53,11 @@ Route::get('/data_santri', function () {
 //pegawai
 Route::get('/data_pegawai','PegawaiController@index');
 Route::post('/data_pegawai/store','PegawaiController@store');
-
+Route::get('/data_pegawai/hapus/{id}', 'PegawaiController@hapus');  
 //pengajar
 Route::get('/data_pengajar','PengajarController@index');
 Route::post('/data_pengajar/store','PengajarController@store');
+Route::get('/data_pengajar/hapus/{id}', 'PengajarController@hapus');  
 
 //=====================konfigurasi=======================
 Route::get('/admin', function () {

@@ -48,7 +48,7 @@
                 <a href="#" data-toggle="modal" data-target="#ModalEdit" class="icon-edit pr-3">
                   <i class="fas fa-edit"></i>
                 </a>
-                <a href="#" class="icon-delete">
+                <a href="/data_pegawai/hapus/{{$pg->id}}" class="icon-delete">
                   <i class="fas fa-trash"></i>
                 </a>
               </td>

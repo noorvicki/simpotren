@@ -23,4 +23,8 @@ class PegawaiController extends Controller
     	]);
     	return redirect('/data_pegawai');
     }
+    public function hapus($id){
+		Pegawai::find($id)->delete();
+    	return redirect ('/data_pegawai');
+    }
 }
