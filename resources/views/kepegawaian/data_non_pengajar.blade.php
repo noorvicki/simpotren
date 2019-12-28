@@ -71,55 +71,59 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          <form action="/data_pegawai/store" method="POST">
-            <div class="form-group">
-              <label for="NIP">NIP</label>
-              <input type="text" class="form-control" id="NIP" name="NIP" placeholder="Masukkan NIP">
-            </div>
-            <div class="form-group">
-              <label for="nama">Nama</label>
-              <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama">
-            </div>
-            <div class="form-group">
-              <label for="alamat">Alamat</label>
-              <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat">
-            </div>
-            <div class="form-group">
-              <label for="nomorHp">No Telp / HP</label>
-              <input type="text" class="form-control" id="nomorHp" name="nomorHp" placeholder="Masukkan No Telp / HP">
-            </div>
-            <div class="form-group">
-              <label for="bidang">Staff Bagian</label>
-              <input type="text" class="form-control" id="bidang" name="bidang" placeholder="Masukkan Bagian Staff">
-            </div>
-            <div class="form-group">
-              <label for="jk">Kamar</label>
-              <select id="jk" class="custom-select">
-                <option selected name="jk">Pilih Jenis Kelamin</option>
-                <option value="Laki-Laki">Laki-Laki</option>
-                <option value="Perempuan">Perempuan</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="foto">Foto</label>
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="Filefoto">Upload</span>
-                </div>
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="Filefoto">
-                  <label class="custom-file-label" for="inputGroupFile01">Pilih Foto</label>
+                <form action="/data_pegawai/update/" method="get">
+          {{csrf_field()}}
+          <div class="modal-body">
+              <div class="form-group">
+                <label for="NIP">NIP</label>
+                <input type="text" class="form-control" id="NIP" name="NIP" placeholder="Masukkan NIP">
+              </div>
+              <div class="form-group">
+                <label for="pswd">Password</label>
+                <input type="text" class="form-control" id="pswd" name="pswd" placeholder="Masukkan Password Baru">
+              </div>
+              <div class="form-group">
+                <label for="nama">Nama</label>
+                <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama">
+              </div>
+              <div class="form-group">
+                <label for="alamat">Alamat</label>
+                <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat">
+              </div>
+              <div class="form-group">
+                <label for="nomorHp">No Telp / HP</label>
+                <input type="text" class="form-control" id="nomorHp" name="nomorHp" placeholder="Masukkan No Telp / HP">
+              </div>
+              <div class="form-group">
+                <label for="bidang">Staff Bagian</label>
+                <input type="text" class="form-control" id="bidang" name="bidang" placeholder="Masukkan Bagian Staff">
+              </div>
+              <div class="form-group">
+                <label for="jk">Jenis Kelamin</label>
+                <select id="jk"name="jk" class="custom-select">
+                  <option disabled >Pilih Jenis Kelamin</option>
+                  <option value="Laki-Laki">Laki-Laki</option>
+                  <option value="Perempuan">Perempuan</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="foto">Foto</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="Filefoto">Upload</span>
+                  </div>
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="Filefoto">
+                    <label class="custom-file-label" for="inputGroupFile01">Pilih Foto</label>
+                  </div>
                 </div>
               </div>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Simpan</button>
-        </div>
-      </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <input type="submit" value="Simpan" class="btn btn-primary">
+          </div>
+        </form> 
     </div>
   </div>
 
@@ -180,7 +184,6 @@
                     <label class="custom-file-label" for="inputGroupFile01">Pilih Foto</label>
                   </div>
                 </div>
-
               </div>
           </div>
           <div class="modal-footer">

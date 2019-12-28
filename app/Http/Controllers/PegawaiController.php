@@ -27,4 +27,17 @@ class PegawaiController extends Controller
 		Pegawai::find($id)->delete();
     	return redirect ('/data_pegawai');
     }
+    public function update(Request $request)
+    {
+        // update data pegawai
+        DB::table('tbl_pegawai')->where('id',$request->NIP)->update([
+        'nama'=>$request->nama,
+        'alamat'=>$request->alamat,
+        'telepon'=>$request->nomorHp,
+        'staff_bagian'=>$request->bidang,
+        'jenis_kelamin'=>$request->jk
+        ]);
+        // alihkan halaman ke halaman pegawai
+        return redirect('/data_pegawai');
+    }
 }
