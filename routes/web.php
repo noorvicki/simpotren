@@ -11,10 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('login');
-});
+Route::get('/', 'AuthController@login')->name('login');
+Route::post('/postlogin', 'AuthController@postlogin');
+Route::get('/logout', 'AuthController@logout');
 
+Route::get('/dashboard', 'DashboardController@index')->middleware('auth');
 //=================== Akademik ======================
 Route::get('/absensi', function () {
     return view('akademik.absensi');
