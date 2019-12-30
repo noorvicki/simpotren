@@ -43,8 +43,8 @@
         <div class="list-sidebar--profile mb-1 pb-3 border-bottom-1 shadow-sm">
           <img src="/img/user.jpg" alt="" class="rounded-circle list-sidebar--profile__img shadow" width="80"
             height="80">
-          <span class="ml-2 list-sidebar--profile__name">Abunawas Arifandi</span>
-          <span class="list-sidebar--profile__admin">Admin</span>
+          <span class="ml-2 list-sidebar--profile__name">{{auth()->user()->nama}}</span>
+          <span class="list-sidebar--profile__admin">{{auth()->user()->role}}</span>
         </div>
         <li class="border-bottom">
           <a href="/index.html" class="sidebar-menu normal" aria-expanded="false">
@@ -131,7 +131,7 @@
           </ul>
         </li>
         <li class="border-bottom">
-          <a href="#" class="sidebar-menu normal" aria-expanded="false" id="dashboardMenu">
+          <a href="/logout" class="sidebar-menu normal" aria-expanded="false" id="dashboardMenu">
             <i class="fas fa-door-open"></i>
             <p>Logout</p>
           </a>
