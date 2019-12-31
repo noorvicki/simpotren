@@ -108,9 +108,9 @@
             <p>Pembayaran</p>
           </a>
           <ul class="collapse list-unstyled" id="pembayaranSubmenu" data-parent="#sidebar">
-            <li class="mb-1">
+<!--             <li class="mb-1">
               <a href="/pembayaran">Pembayaran SPP</a>
-            </li class="mb-1">
+            </li class="mb-1"> -->
             <li class="mb-2">
               <a href="/laporan_pembayaran">Laporan Pembayaran SPP</a>
             </li>

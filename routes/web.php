@@ -70,12 +70,10 @@ Route::get('/superadmin', function () {
 });
 
 //===================== pembayaran ======================
-Route::get('/laporan_pembayaran', function () {
-    return view('pembayaran.laporan_pembayaran');
-});
-Route::get('/pembayaran', function () {
-    return view('pembayaran.pembayaran');
-});
+Route::get('/laporan_pembayaran', 'KeuanganController@index');
+// Route::get('/pembayaran', function () {
+//     return view('pembayaran.pembayaran');
+// });
 
 //===================== Pendaftaran ======================
 Route::get('/pendaftaran', 'PendaftaranController@index');

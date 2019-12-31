@@ -48,14 +48,15 @@
             </tr>
           </thead>
           <tbody>
+            @foreach($santri as $s)
             <tr>
-              <td>testestes</td>
-              <td>testestes</td>
-              <td>testestes</td>
-              <td>testestes</td>
-              <td>testestes</td>
-              <td>testestes</td>
-              <td>testestes</td>
+              <td>{{$s->Keuangan->id}}</td>
+              <td>{{$s->Keuangan->tanggal_bayar}}</td>
+              <td>{{$s->Keuangan->periode}}</td>
+              <td>{{$s->id}}</td>
+              <td>{{$s->nama}}</td>
+              <td>{{$s->Keuangan->jumlah}}</td>
+              <td>{{$s->Keuangan->keterangan}}</td>
               <td>
                 <a href="#" data-toggle="modal" data-target="#ModalEdit" class="icon-edit pr-3">
                   <i class="fas fa-edit"></i>
@@ -65,6 +66,7 @@
                 </a>
               </td>
             </tr>
+            @endforeach()
           </tbody>
         </table>
       </div>
@@ -82,39 +84,43 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label for="example-date-input">Date</label>
-              <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
-            </div>
-            <div class="form-group">
-              <label for="periode">Periode</label>
-              <select class="custom-select">
-                <option selected>Periode</option>
-                <option value="2017">2017</option>
-                <option value="2018">2018</option>
-                <option value="2019">2019</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="NIS">NIS</label>
-              <input type="text" class="form-control" id="NIS" placeholder="Masukkan NIS">
-            </div>
-            <div class="form-group">
-              <label for="Nama">Nama</label>
-              <input type="text" class="form-control" id="Nama" placeholder="Masukkan Nama">
-            </div>
-            <div class="form-group">
-              <label for="Total">Total</label>
-              <input type="text" class="form-control" id="Total" placeholder="Masukkan Total Pembayaran">
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Simpan</button>
-        </div>
+        <form>
+          <div class="modal-body">
+              <div class="form-group">
+                <label for="example-date-input">Date</label>
+                <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+              </div>
+              <div class="form-group">
+                <label for="periode">Periode</label>
+                <select class="custom-select">
+                  <option selected>Periode</option>
+                  <option value="2017">2017</option>
+                  <option value="2018">2018</option>
+                  <option value="2019">2019</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="NIS">NIS</label>
+                <input type="text" class="form-control" id="NIS" placeholder="Masukkan NIS">
+              </div>
+              <div class="form-group">
+                <label for="Nama">Nama</label>
+                <input type="text" class="form-control" id="Nama" placeholder="Masukkan Nama">
+              </div>
+              <div class="form-group">
+                <label for="Total">Total</label>
+                <input type="text" class="form-control" id="Total" placeholder="Masukkan Total Pembayaran">
+              </div>
+              <div class="form-group">
+                <label for="Keterangan">Keterangan</label>
+                <input type="text" class="form-control" id="Keterangan" placeholder="Masukkan Keterangan">
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Simpan</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -130,39 +136,43 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label for="example-date-input">Date</label>
-              <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
-            </div>
-            <div class="form-group">
-              <label for="periode">Periode</label>
-              <select class="custom-select">
-                <option selected>Periode</option>
-                <option value="2017">2017</option>
-                <option value="2018">2018</option>
-                <option value="2019">2019</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="NIS">NIS</label>
-              <input type="text" class="form-control" id="NIS" placeholder="Masukkan NIS">
-            </div>
-            <div class="form-group">
-              <label for="Nama">Nama</label>
-              <input type="text" class="form-control" id="Nama" placeholder="Masukkan Nama">
-            </div>
-            <div class="form-group">
-              <label for="Total">Total</label>
-              <input type="text" class="form-control" id="Total" placeholder="Masukkan Total Pembayaran">
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Simpan</button>
-        </div>
+        <form>
+          <div class="modal-body">
+              <div class="form-group">
+                <label for="example-date-input">Date</label>
+                <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+              </div>
+              <div class="form-group">
+                <label for="periode">Periode</label>
+                <select class="custom-select">
+                  <option selected>Periode</option>
+                  <option value="2017">2017</option>
+                  <option value="2018">2018</option>
+                  <option value="2019">2019</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="NIS">NIS</label>
+                <input type="text" class="form-control" id="NIS" placeholder="Masukkan NIS">
+              </div>
+              <div class="form-group">
+                <label for="Nama">Nama</label>
+                <input type="text" class="form-control" id="Nama" placeholder="Masukkan Nama">
+              </div>
+              <div class="form-group">
+                <label for="Total">Total</label>
+                <input type="text" class="form-control" id="Total" placeholder="Masukkan Total Pembayaran">
+              </div>
+              <div class="form-group">
+                <label for="Keterangan">Keterangan</label>
+                <input type="text" class="form-control" id="Keterangan" placeholder="Masukkan Keterangan">
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Simpan</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
