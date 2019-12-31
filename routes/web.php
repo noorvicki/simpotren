@@ -11,11 +11,11 @@
 |
 */
 
+//==================== Login ========================
 Route::get('/', 'AuthController@login')->name('login');
 Route::post('/postlogin', 'AuthController@postlogin');
 Route::get('/logout', 'AuthController@logout');
 
-Route::get('/dashboard', 'DashboardController@index')->middleware('auth');
 //=================== Akademik ======================
 Route::get('/absensi', function () {
     return view('akademik.absensi');
@@ -37,6 +37,8 @@ Route::get('/raport_santri', function () {
 });
 
 //==================== Dashboard ======================
+Route::get('/dashboard', 'DashboardController@index')->middleware('auth');
+
 Route::get('/data_gedung', function () {
     return view('dashboard.data_gedung');
 });
@@ -52,14 +54,18 @@ Route::get('/data_santri', function () {
 
 // ==================== kepegawaian ====================
 //pegawai
-Route::get('/data_pegawai','PegawaiController@index');
-Route::post('/data_pegawai/store','PegawaiController@store');
-Route::get('/data_pegawai/hapus/{id}', 'PegawaiController@hapus'); 
-Route::get('/data_pegawai/update/', 'PegawaiController@update'); 
-//pengajar
-Route::get('/data_pengajar','PengajarController@index');
-Route::post('/data_pengajar/store','PengajarController@store');
-Route::get('/data_pengajar/hapus/{id}', 'PengajarController@hapus');  
+Route::group(['middleware' => 'auth'], function(){
+
+    Route::get('/data_pegawai','PegawaiController@index');
+    Route::post('/data_pegawai/store','PegawaiController@store');
+    Route::get('/data_pegawai/hapus/{id}', 'PegawaiController@hapus'); 
+    Route::get('/data_pegawai/update/', 'PegawaiController@update'); 
+    //pengajar
+    Route::get('/data_pengajar','PengajarController@index');
+    Route::post('/data_pengajar/store','PengajarController@store');
+    Route::get('/data_pengajar/hapus/{id}', 'PengajarController@hapus'); 
+
+}); 
 
 //=====================konfigurasi=======================
 Route::get('/admin', function () {
@@ -76,6 +82,10 @@ Route::get('/laporan_pembayaran', 'KeuanganController@index');
 // });
 
 //===================== Pendaftaran ======================
-Route::get('/pendaftaran', 'PendaftaranController@index');
-Route::post('/pendaftaran/edit', 'PendaftaranController@edit');
-Route::post('/pendaftaran/hapus', 'PendaftaranController@hapus');
+Route::group(['middleware' => 'auth'], function(){
+
+    Route::get('/pendaftaran', 'PendaftaranController@index');
+    Route::post('/pendaftaran/edit', 'PendaftaranController@edit');
+    Route::post('/pendaftaran/hapus', 'PendaftaranController@hapus');
+
+}); 
