@@ -77,6 +77,8 @@ Route::get('/superadmin', function () {
 
 //===================== pembayaran ======================
 Route::get('/laporan_pembayaran', 'KeuanganController@index');
+Route::POST('/laporan_pembayaran/store','KeuanganController@store');
+Route::get('/laporan_pembayaran/hapus/{id}', 'KeuanganController@hapus'); 
 // Route::get('/pembayaran', function () {
 //     return view('pembayaran.pembayaran');
 // });

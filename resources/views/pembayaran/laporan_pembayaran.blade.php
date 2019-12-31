@@ -48,24 +48,26 @@
             </tr>
           </thead>
           <tbody>
-            @foreach($santri as $s)
-            <tr>
-              <td>{{$s->Keuangan->id}}</td>
-              <td>{{$s->Keuangan->tanggal_bayar}}</td>
-              <td>{{$s->Keuangan->periode}}</td>
-              <td>{{$s->id}}</td>
-              <td>{{$s->nama}}</td>
-              <td>{{$s->Keuangan->jumlah}}</td>
-              <td>{{$s->Keuangan->keterangan}}</td>
-              <td>
-                <a href="#" data-toggle="modal" data-target="#ModalEdit" class="icon-edit pr-3">
-                  <i class="fas fa-edit"></i>
-                </a>
-                <a href="#" class="icon-delete">
-                  <i class="fas fa-trash"></i>
-                </a>
-              </td>
-            </tr>
+            @foreach($santri as $p)
+              @foreach($keuangan as $k)
+              <tr>
+                <td>{{$k->id}}</td>
+                <td>{{$k->tanggal_bayar}}</td>
+                <td>{{$k->periode}}</td>
+                <td>{{$p->id}}</td>
+                <td>{{$p->nama}}</td>
+                <td>{{$k->jumlah}}</td>
+                <td>{{$k->keterangan}}</td>
+                <td>
+                  <a href="#" data-toggle="modal" data-target="#ModalEdit" class="icon-edit pr-3">
+                    <i class="fas fa-edit"></i>
+                  </a>
+                  <a href="/laporan_pembayaran/hapus/{{$k->id}}" class="icon-delete">
+                    <i class="fas fa-trash"></i>
+                  </a>
+                </td>
+              </tr>
+              @endforeach()
             @endforeach()
           </tbody>
         </table>
@@ -87,12 +89,12 @@
         <form>
           <div class="modal-body">
               <div class="form-group">
-                <label for="example-date-input">Date</label>
-                <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+                <label for="tanggal">Date</label>
+                <input class="form-control" type="date" name="tanggal" id="tangal">
               </div>
               <div class="form-group">
                 <label for="periode">Periode</label>
-                <select class="custom-select">
+                <select name="periode" class="custom-select">
                   <option selected>Periode</option>
                   <option value="2017">2017</option>
                   <option value="2018">2018</option>
@@ -100,25 +102,30 @@
                 </select>
               </div>
               <div class="form-group">
-                <label for="NIS">NIS</label>
-                <input type="text" class="form-control" id="NIS" placeholder="Masukkan NIS">
+                <label for="NIS">Masukkan NIS</label>
+                <select name="nis" class="custom-select">
+                  <option selected>Masukkan NIS</option>
+                  @foreach($santri as $k)
+                    <option value="{{$k->id}}">{{$k->id}}</option>
+                  @endforeach()
+                </select>
               </div>
               <div class="form-group">
                 <label for="Nama">Nama</label>
-                <input type="text" class="form-control" id="Nama" placeholder="Masukkan Nama">
+                <input name="nama" type="text" class="form-control" id="Nama" placeholder="Masukkan Nama">
               </div>
               <div class="form-group">
                 <label for="Total">Total</label>
-                <input type="text" class="form-control" id="Total" placeholder="Masukkan Total Pembayaran">
+                <input name="total" type="text" class="form-control" id="Total" placeholder="Masukkan Total Pembayaran">
               </div>
               <div class="form-group">
                 <label for="Keterangan">Keterangan</label>
-                <input type="text" class="form-control" id="Keterangan" placeholder="Masukkan Keterangan">
+                <input name="keterangan" type="text" class="form-control" id="Keterangan" placeholder="Masukkan Keterangan">
               </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Simpan</button>
+            <input type="submit" class="form-control" value="Simpan">
           </div>
         </form>
       </div>
@@ -136,15 +143,16 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form>
+        <form action="/laporan_pembayaran/store" method="POST">
+          {{csrf_field()}}
           <div class="modal-body">
               <div class="form-group">
-                <label for="example-date-input">Date</label>
-                <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+                <label for="tanggal">Date</label>
+                <input class="form-control" type="date" name="tanggal" id="tangal">
               </div>
               <div class="form-group">
                 <label for="periode">Periode</label>
-                <select class="custom-select">
+                <select name="periode" class="custom-select">
                   <option selected>Periode</option>
                   <option value="2017">2017</option>
                   <option value="2018">2018</option>
@@ -152,25 +160,26 @@
                 </select>
               </div>
               <div class="form-group">
-                <label for="NIS">NIS</label>
-                <input type="text" class="form-control" id="NIS" placeholder="Masukkan NIS">
-              </div>
-              <div class="form-group">
-                <label for="Nama">Nama</label>
-                <input type="text" class="form-control" id="Nama" placeholder="Masukkan Nama">
+                <label for="NIS">Masukkan NIS</label>
+                <select name="nis" class="custom-select">
+                  <option selected>Masukkan NIS</option>
+                  @foreach($santri as $k)
+                    <option value="{{$k->id}}">{{$k->id}}</option>
+                  @endforeach()
+                </select>
               </div>
               <div class="form-group">
                 <label for="Total">Total</label>
-                <input type="text" class="form-control" id="Total" placeholder="Masukkan Total Pembayaran">
+                <input name="total" type="text" class="form-control" id="Total" placeholder="Masukkan Total Pembayaran">
               </div>
               <div class="form-group">
                 <label for="Keterangan">Keterangan</label>
-                <input type="text" class="form-control" id="Keterangan" placeholder="Masukkan Keterangan">
+                <input name="keterangan" type="text" class="form-control" id="Keterangan" placeholder="Masukkan Keterangan">
               </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Simpan</button>
+            <input type="submit" value="Simpan" class="btn btn-primary">
           </div>
         </form>
       </div>
