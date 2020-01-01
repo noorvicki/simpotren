@@ -10,8 +10,7 @@
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/fontawesome/css/all.min.css">
   <link rel="stylesheet" href="/css/spinkit.css">
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" />
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
   <title>Simpotren || Darussunnah</title>
@@ -42,13 +41,12 @@
       </a>
       <ul class="list-unstyled sidebar-components">
         <div class="list-sidebar--profile mb-1 pb-3 border-bottom-1 shadow-sm">
-          <img src="/img/user.jpg" alt="" class="rounded-circle list-sidebar--profile__img shadow" width="80"
-            height="80">
-          <span class="ml-2 list-sidebar--profile__name">Abunawas Arifandi</span>
-          <span class="list-sidebar--profile__admin">Admin</span>
+          <img src="/img/user.jpg" alt="" class="rounded-circle list-sidebar--profile__img shadow" width="80" height="80">
+          <span class="ml-2 list-sidebar--profile__name">{{auth()->user()->nama}}</span>
+          <span class="list-sidebar--profile__admin">{{auth()->user()->role}}</span>
         </div>
         <li class="border-bottom">
-          <a href="/index.html" class="sidebar-menu normal" aria-expanded="false">
+          <a href="/dashboard" class="sidebar-menu normal" aria-expanded="false">
             <i class="fas fa-columns"></i>
             <p>Dashboard</p>
           </a>
@@ -132,7 +130,7 @@
           </ul>
         </li>
         <li class="border-bottom">
-          <a href="#" class="sidebar-menu normal" aria-expanded="false" id="dashboardMenu">
+          <a href="/logout" class="sidebar-menu normal" aria-expanded="false" id="dashboardMenu">
             <i class="fas fa-door-open"></i>
             <p>Logout</p>
           </a>
