@@ -51,12 +51,14 @@
             <p>Dashboard</p>
           </a>
         </li>
+
         <li class="border-bottom">
           <a href="/pendaftaran" class="sidebar-menu normal" aria-expanded="true">
             <i class="fas fa-address-card"></i>
             <p>Pendaftaran</p>
           </a>
         </li>
+
         <li class="border-bottom">
           <a href="#akademikSubmenu" class="sidebar-menu" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-book"></i>
@@ -84,6 +86,8 @@
             </li>
           </ul>
         </li>
+
+        @if(auth()->user()->role == 'Pegawai' || auth()->user()->role == 'Admin' || auth()->user()->role == 'Superadmin')
         <li class="border-bottom">
           <a href="#kepegawaianSubmenu" class="sidebar-menu" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-users"></i>
@@ -99,6 +103,9 @@
             </li>
           </ul>
         </li>
+        @endif
+
+
         <li class="border-bottom">
           <a href="#pembayaranSubmenu" class="sidebar-menu" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-chart-bar"></i>
@@ -114,6 +121,7 @@
             </li>
           </ul>
         </li>
+        @if(auth()->user()->role == 'Admin' || auth()->user()->role == 'Superadmin')
         <li class="border-bottom">
           <a href="#konfigurasiSubmenu" class="sidebar-menu" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-user-cog"></i>
@@ -122,13 +130,16 @@
           </a>
           <ul class="collapse list-unstyled" id="konfigurasiSubmenu" data-parent="#sidebar">
             <li class="mb-1">
-              <a href="/admin">Home 1</a>
+              <a href="/admin">Konfigurasi Admin</a>
             </li>
+            @if(auth()->user()->role == 'Superadmin')
             <li class="mb-1">
-              <a href="/superadmin">Home 2</a>
+              <a href="/superadmin">Superadmin</a>
             </li>
+            @endif
           </ul>
         </li>
+        @endif
         <li class="border-bottom">
           <a href="/logout" class="sidebar-menu normal" aria-expanded="false" id="dashboardMenu">
             <i class="fas fa-door-open"></i>
