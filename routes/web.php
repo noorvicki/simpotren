@@ -90,15 +90,17 @@ Route::get('/superadmin', function () {
 })->middleware(['auth', 'checkRole:Superadmin']);
 
 //===================== pembayaran ======================
+
 Route::group(['middleware' => ['auth', 'checkRole:Santri,Pegawai,Admin,Superadmin']], function () {
 
-    Route::get('/laporan_pembayaran', function () {
-        return view('pembayaran.laporan_pembayaran');
-    });
-    Route::get('/pembayaran', function () {
-        return view('pembayaran.pembayaran');
-    });
+  Route::get('/laporan_pembayaran', 'KeuanganController@index');
+  Route::POST('/laporan_pembayaran/store','KeuanganController@store');
+  Route::get('/laporan_pembayaran/hapus/{id}', 'KeuanganController@hapus'); 
+  // Route::get('/pembayaran', function () {
+  //     return view('pembayaran.pembayaran');
+  // });
 });
+
 
 //===================== Pendaftaran ======================
 
