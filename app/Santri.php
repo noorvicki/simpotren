@@ -16,6 +16,7 @@ class Santri extends Model
 		'tempat_lahir',
 		'tanggal_lahir',
 		'jenis_kelamin',
+		'email',
 		'alamat',
 		'telepon',
 		'asal_sekolah',
@@ -24,5 +25,11 @@ class Santri extends Model
 
 
 	];
+
+	public function keuangan(){
+
+		return $this->hasOne('App\Keuangan', 'id_santri');
+
+	}
 
 }
