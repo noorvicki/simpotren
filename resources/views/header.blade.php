@@ -42,8 +42,8 @@
       <ul class="list-unstyled sidebar-components">
         <div class="list-sidebar--profile mb-1 pb-3 border-bottom-1 shadow-sm">
           <img src="/img/user.jpg" alt="" class="rounded-circle list-sidebar--profile__img shadow" width="80" height="80">
-          <span class="ml-2 list-sidebar--profile__name"></span>
-          <span class="list-sidebar--profile__admin"></span>
+          <span class="ml-2 list-sidebar--profile__name">{{auth()->user()->nama}}</span>
+          <span class="list-sidebar--profile__admin">{{auth()->user()->role}}</span>
         </div>
         <li class="border-bottom">
           <a href="/dashboard" class="sidebar-menu normal" aria-expanded="false">
@@ -113,7 +113,7 @@
             <p>Pembayaran</p>
           </a>
           <ul class="collapse list-unstyled" id="pembayaranSubmenu" data-parent="#sidebar">
-<!--             <li class="mb-1">
+            <!--             <li class="mb-1">
               <a href="/pembayaran">Pembayaran SPP</a>
             </li class="mb-1"> -->
             <li class="mb-2">
