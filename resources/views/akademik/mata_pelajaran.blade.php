@@ -32,19 +32,22 @@
             </tr>
           </thead>
           <tbody>
+          @foreach($matpel as $mp)
             <tr>
-              <td>TES</td>
-              <td>testestes</td>
-              <td>400</td>
+            <td>{{$mp->id}}</td>
+              <td>{{$mp->nama_mapel}}</td>
+              <td>{{$mp->kitab}}</td>
+              <td><img src="" alt="#"></td>
               <td>
                 <a href="#" data-toggle="modal" data-target="#ModalEdit" class="icon-edit pr-3">
                   <i class="fas fa-edit"></i>
                 </a>
-                <a href="#" class="icon-delete">
+                <a href="/mata_pelajaran/hapus/{{$mp->id}}" class="icon-delete">
                   <i class="fas fa-trash"></i>
                 </a>
               </td>
             </tr>
+            @endforeach
           </tbody>
         </table>
       </div>
@@ -62,22 +65,35 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+        <form action="/mata_pelajaran/update/" method="get">
+        {{csrf_field()}}
         <div class="modal-body">
-          <form>
+              <div class="form-group">
+              <label for="id">ID</label>
+              <input type="text" class="form-control" id="ID" name="ID" placeholder="Masukkan id kelas">
+            </div>
             <div class="form-group">
               <label for="mapel">Nama Mapel</label>
-              <input type="text" class="form-control" id="mapel" placeholder="Masukkan nama Mata Pelajaran">
+              <input type="text" class="form-control" id="mapel" name="mapel" placeholder="Masukkan nama Mata Pelajaran">
             </div>
-            <div class="form-group w-25">
+            <div class="form-group">
+              <label for="golmapel">Golongan Mapel</label>
+              <input type="text" class="form-control" id="golmapel" name="golmapel" placeholder="Masukkan nama Mata Pelajaran">
+            </div>
+            <div class="form-group">
               <label for="kitab">Kitab</label>
-              <input type="text" class="form-control" id="kitab" placeholder="Masukkan nama kitab">
+              <input type="text" class="form-control" id="kitab" name="kitab" placeholder="Masukkan nama kitab">
             </div>
-          </form>
+            <div class="form-group">
+              <label for="pengajar">Nama Pengajar</label>
+              <input type="text" class="form-control" id="pengajar" name="pengajar" placeholder="Masukkan nama pengajar">
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Simpan</button>
+          <input type="submit" value="Simpan" class="btn btn-primary">
         </div>
+        </form>
       </div>
     </div>
   </div>
@@ -93,22 +109,31 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+        <form action="/mata_pelajaran/store" method="POST">
+          {{csrf_field()}}
         <div class="modal-body">
-          <form>
             <div class="form-group">
               <label for="mapel">Nama Mapel</label>
-              <input type="text" class="form-control" id="mapel" placeholder="Masukkan nama Mata Pelajaran">
+              <input type="text" class="form-control" id="mapel" name="mapel" placeholder="Masukkan nama Mata Pelajaran">
             </div>
-            <div class="form-group w-25">
+            <div class="form-group">
+              <label for="golmapel">Golongan Mapel</label>
+              <input type="text" class="form-control" id="golmapel" name="golmapel" placeholder="Masukkan nama Mata Pelajaran">
+            </div>
+            <div class="form-group">
               <label for="kitab">Kitab</label>
-              <input type="text" class="form-control" id="kitab" placeholder="Masukkan nama kitab">
+              <input type="text" class="form-control" id="kitab" name="kitab" placeholder="Masukkan nama kitab">
             </div>
-          </form>
+            <div class="form-group">
+              <label for="pengajar">Nama Pengajar</label>
+              <input type="text" class="form-control" id="pengajar" name="pengajar" placeholder="Masukkan nama pengajar">
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Simpan</button>
+          <input type="submit" value="Simpan" class="btn btn-primary">
         </div>
+        </form>
       </div>
     </div>
   </div>
