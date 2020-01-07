@@ -19,7 +19,7 @@ class CreateTblPengajarTable extends Migration
             $table->text('alamat');
             $table->string('telepon', 191);
             $table->string('bidang_ajar', 191);
-            $table->string('jenis kelamin', 191);
+            $table->string('jenis_kelamin', 191);
             $table->string('foto', 191);
             $table->timestamps();
         });

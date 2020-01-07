@@ -45,7 +45,7 @@
           <td>Senin</td>
           <td>06.30</td>
           <td>12</td>
-          <td>A</td>
+          <td>Ar-Rahman</td>
           <td>
             <a href="#" data-toggle="modal" data-target="#ModalEdit" class="icon-edit pr-3">
               <i class="fas fa-edit"></i>

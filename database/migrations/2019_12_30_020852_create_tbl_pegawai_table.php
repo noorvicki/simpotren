@@ -19,7 +19,7 @@ class CreateTblPegawaiTable extends Migration
             $table->text('alamat');
             $table->string('telepon', 191);
             $table->string('staff_bagian', 191);
-            $table->string('jenis kelamin', 191);
+            $table->string('jenis_kelamin', 191);
             $table->string('foto', 191);
             $table->timestamps();
         });

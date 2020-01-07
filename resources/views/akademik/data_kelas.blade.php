@@ -33,8 +33,8 @@
       <tbody>
         <tr>
           <td>1</td>
-          <td>Aradea Atfal Risdianto</td>
-          <td>400</td>
+          <td>Arr-Rahman</td>
+          <td>30</td>
           <td>
             <a href="#" data-toggle="modal" data-target="#ModalEdit" class="icon-edit pr-3">
               <i class="fas fa-edit"></i>

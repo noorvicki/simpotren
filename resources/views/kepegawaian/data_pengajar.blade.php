@@ -29,7 +29,7 @@
           <th>Nama</th>
           <th>Alamat</th>
           <th>No Telp / HP</th>
-          <th>Staff Bagian</th>
+          <th>Bidang Ajar</th>
           <th>Jenis Kelamin</th>
           <th>Foto</th>
           <th></th>
