@@ -37,16 +37,22 @@
             </tr>
           </thead>
           <tbody>
+          @foreach($jadwal as $jp)
+          <!-- @foreach($matpel as $mp) -->
+          @foreach($pengajar as $aj)
+          @foreach($datakelas as $dk)
+          
             <tr>
-              <td>1</td>
-              <td>testestes</td>
-              <td>testestes</td>
-              <td>testestes</td>
-              <td>testestes</td>
-              <td>testestes</td>
-              <td>12</td>
-              <td>A</td>
-              <td>
+            <td>{{$jp->id}}</td>
+            <td>{{$mp->nama_mapel}}</td>
+            <td>{{$mp->kitab}}</td>
+            <td>{{$aj->nama}}</td>
+            <td>{{$jp->hari}}</td>
+            <td>{{$jp->jam}}</td>
+            <td>{{$dk->nama_kelas}}</td>
+            <td>{{$jp->kelas}}</td>
+            <td><img src="" alt="#"></td>
+            <td>
                 <a href="#" data-toggle="modal" data-target="#ModalEdit" class="icon-edit pr-3">
                   <i class="fas fa-edit"></i>
                 </a>
@@ -55,6 +61,10 @@
                 </a>
               </td>
             </tr>
+            <!-- @endforeach -->
+            @endforeach
+            @endforeach
+            @endforeach
           </tbody>
         </table>
       </div>
