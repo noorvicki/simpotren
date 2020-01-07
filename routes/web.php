@@ -17,17 +17,29 @@ Route::post('/postlogin', 'AuthController@postlogin');
 Route::get('/logout', 'AuthController@logout');
 
 //=================== Akademik ======================
+//datakelas
+Route::group(['middleware' => 'auth'], function(){
+Route::get('/data_kelas','DatakelasController@index');
+Route::post('/data_kelas/store','DatakelasController@store');
+Route::get('/data_kelas/hapus/{id}', 'DatakelasController@hapus'); 
+Route::get('/data_kelas/update/', 'DatakelasController@update'); 
+}); 
 Route::get('/absensi', function () {
     return view('akademik.absensi');
 });
-Route::get('/data_kelas', function () {
-    return view('akademik.data_kelas');
+//jadwal pelajaran
+Route::group(['middleware' => 'auth'], function(){
+Route::get('/jadwal_pelajaran','JadwalController@index');
+Route::post('/jadwal_pelajaran/store','JadwalController@store');
+Route::get('/jadwal_pelajaran/hapus/{id}', 'JadwalController@hapus'); 
+Route::get('/jadwal_pelajaran/update/', 'JadwalController@update'); 
 });
-Route::get('/jadwal_pelajaran', function () {
-    return view('akademik.jadwal_pelajaran');
-});
-Route::get('/mata_pelajaran', function () {
-    return view('akademik.mata_pelajaran');
+//mata pelajaran
+Route::group(['middleware' => 'auth'], function(){
+Route::get('/mata_pelajaran','MatpelController@index');
+Route::post('/mata_pelajaran/store','MatpelController@store');
+Route::get('/mata_pelajaran/hapus/{id}', 'MatpelController@hapus'); 
+Route::get('/mata_pelajaran/update/', 'MatpelController@update'); 
 });
 Route::get('/penilaian', function () {
     return view('akademik.penilaian');
@@ -64,7 +76,6 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/data_pengajar','PengajarController@index');
     Route::post('/data_pengajar/store','PengajarController@store');
     Route::get('/data_pengajar/hapus/{id}', 'PengajarController@hapus'); 
-
 }); 
 
 //=====================konfigurasi=======================
@@ -77,8 +88,6 @@ Route::get('/superadmin', function () {
 
 //===================== pembayaran ======================
 Route::get('/laporan_pembayaran', 'KeuanganController@index');
-Route::POST('/laporan_pembayaran/store','KeuanganController@store');
-Route::get('/laporan_pembayaran/hapus/{id}', 'KeuanganController@hapus'); 
 // Route::get('/pembayaran', function () {
 //     return view('pembayaran.pembayaran');
 // });

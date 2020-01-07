@@ -31,19 +31,22 @@
             </tr>
           </thead>
           <tbody>
+          @foreach($datakelas as $dk)
             <tr>
-              <td>TES</td>
-              <td>testestes</td>
-              <td>400</td>
+            <td>{{$dk->id}}</td>
+              <td>{{$dk->nama_kelas}}</td>
+              <td>{{$dk->jumlah_santri}}</td>
+              <td><img src="" alt="#"></td>
               <td>
                 <a href="#" data-toggle="modal" data-target="#ModalEdit" class="icon-edit pr-3">
                   <i class="fas fa-edit"></i>
                 </a>
-                <a href="#" class="icon-delete">
+                <a href="/data_kelas/hapus/{{$dk->id}}" class="icon-delete">
                   <i class="fas fa-trash"></i>
                 </a>
               </td>
             </tr>
+            @endforeach
           </tbody>
         </table>
       </div>
@@ -61,22 +64,27 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          <form>
+        <form action="/data_kelas/update/" method="get">
+          {{csrf_field()}}
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="id">ID</label>
+              <input type="text" class="form-control" id="ID" name="ID" placeholder="Masukkan id kelas">
+            </div>
             <div class="form-group">
               <label for="kelas">Nama Kelas</label>
-              <input type="text" class="form-control" id="kelas" placeholder="Masukkan nama kelas">
+              <input type="text" class="form-control" id="namakelas" name="namakelas" placeholder="Masukkan nama kelas">
             </div>
-            <div class="form-group w-25">
+            <div class="form-group">
               <label for="jumlahSantri">Jumlah Santri</label>
-              <input type="text" class="form-control" id="jumlahSantri" placeholder="contoh: 100">
+              <input type="text" class="form-control" id="jumlahsantri" name="jumlahsantri" placeholder="contoh: 100">
             </div>
-          </form>
-        </div>
+          </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Simpan</button>
+          <input type="submit" value="Simpan" class="btn btn-primary">
         </div>
+        </form>
       </div>
     </div>
   </div>
@@ -92,23 +100,24 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label for="kelas">Nama Kelas</label>
-              <input type="text" class="form-control" id="kelas" placeholder="Masukkan nama kelas">
-            </div>
-            <div class="form-group w-25">
-              <label for="jumlahSantri">Jumlah Santri</label>
-              <input type="text" class="form-control" id="jumlahSantri" placeholder="contoh: 100">
-            </div>
-          </form>
+        <form action="/data_kelas/store" method="POST">
+        {{csrf_field()}}
+          <div class="modal-body">
+              <div class="form-group">
+                <label for="kelas">Nama Kelas</label>
+                <input type="text" class="form-control" id="namakelas" name="namakelas" placeholder="Masukkan nama kelas">
+              </div>
+              <div class="form-group">
+                <label for="jumlahSantri">Jumlah Santri</label>
+                <input type="text" class="form-control" id="jumlahsantri" name="jumlahsantri" placeholder="contoh: 100">
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <input type="submit" value="Simpan" class="btn btn-primary">
+          </div>
+        </form>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Simpan</button>
-        </div>
-      </div>
     </div>
   </div>
 @include('footer')
