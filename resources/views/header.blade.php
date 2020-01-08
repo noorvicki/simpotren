@@ -42,8 +42,8 @@
       <ul class="list-unstyled sidebar-components">
         <div class="list-sidebar--profile mb-1 pb-3 border-bottom-1 shadow-sm">
           <img src="/img/user.jpg" alt="" class="rounded-circle list-sidebar--profile__img shadow" width="80" height="80">
-          <span class="ml-2 list-sidebar--profile__name"></span>
-          <span class="list-sidebar--profile__admin"></span>
+          <span class="ml-2 list-sidebar--profile__name">{{auth()->user()->nama}}</span>
+          <span class="list-sidebar--profile__admin">{{auth()->user()->role}}</span>
         </div>
         <li class="border-bottom">
           <a href="/dashboard" class="sidebar-menu normal" aria-expanded="false">
@@ -51,12 +51,14 @@
             <p>Dashboard</p>
           </a>
         </li>
+
         <li class="border-bottom">
           <a href="/pendaftaran" class="sidebar-menu normal" aria-expanded="true">
             <i class="fas fa-address-card"></i>
             <p>Pendaftaran</p>
           </a>
         </li>
+
         <li class="border-bottom">
           <a href="#akademikSubmenu" class="sidebar-menu" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-book"></i>
@@ -84,6 +86,8 @@
             </li>
           </ul>
         </li>
+
+        @if(auth()->user()->role == 'Pegawai' || auth()->user()->role == 'Admin' || auth()->user()->role == 'Superadmin')
         <li class="border-bottom">
           <a href="#kepegawaianSubmenu" class="sidebar-menu" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-users"></i>
@@ -99,6 +103,9 @@
             </li>
           </ul>
         </li>
+        @endif
+
+
         <li class="border-bottom">
           <a href="#pembayaranSubmenu" class="sidebar-menu" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-chart-bar"></i>
@@ -106,7 +113,7 @@
             <p>Pembayaran</p>
           </a>
           <ul class="collapse list-unstyled" id="pembayaranSubmenu" data-parent="#sidebar">
-<!--             <li class="mb-1">
+            <!--             <li class="mb-1">
               <a href="/pembayaran">Pembayaran SPP</a>
             </li class="mb-1"> -->
             <li class="mb-2">
@@ -114,6 +121,7 @@
             </li>
           </ul>
         </li>
+        @if(auth()->user()->role == 'Admin' || auth()->user()->role == 'Superadmin')
         <li class="border-bottom">
           <a href="#konfigurasiSubmenu" class="sidebar-menu" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-user-cog"></i>
@@ -122,13 +130,16 @@
           </a>
           <ul class="collapse list-unstyled" id="konfigurasiSubmenu" data-parent="#sidebar">
             <li class="mb-1">
-              <a href="/admin">Home 1</a>
+              <a href="/admin">Konfigurasi Admin</a>
             </li>
+            @if(auth()->user()->role == 'Superadmin')
             <li class="mb-1">
-              <a href="/superadmin">Home 2</a>
+              <a href="/superadmin">Superadmin</a>
             </li>
+            @endif
           </ul>
         </li>
+        @endif
         <li class="border-bottom">
           <a href="/logout" class="sidebar-menu normal" aria-expanded="false" id="dashboardMenu">
             <i class="fas fa-door-open"></i>
