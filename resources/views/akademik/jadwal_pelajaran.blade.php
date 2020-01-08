@@ -1,12 +1,72 @@
 @include('header')
+    <!-- Page Content -->
+    <div id="content">
+      <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+        <div class="container-fluid">
+          <button type="button" id="sidebarCollapse" class="btn btn-dark">
+            <i class="fas fa-stream"></i>
+          </button>
+        </div>
+      </nav>
+      <div class="container-fluid">
+        <nav class="navbar--sub navbar-expand navbar-light bg-gray mt-3 mb-4 shadow">
+          <!-- <h4 class="navbar--sub__title">Data Santri</h4> -->
+          <form class="my-2 my-lg-0 pt-1">
+            <a href="#" class="pr-2">Akademik</a>
+            <i class="far fa-arrow-alt-circle-right"></i>
+            <a href="#" class="pl-2">Jadwal Pelajaran</a>
+          </form>
+        </nav>
+      </div>
 
-<!-- Page Content -->
-<div id="content">
-  <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
-    <div class="container-fluid">
-      <button type="button" id="sidebarCollapse" class="btn btn-dark">
-        <i class="fas fa-stream"></i>
-      </button>
+      <div class="container-fluid">
+        <button class="btn btn-primary mb-4" data-toggle="modal" data-target="#ModalTambah">Tambah Data</button>
+        <table class="table" id="table_id">
+          <thead class="thead-light">
+            <tr>
+              <th>No.</th>
+              <th>Nama Mapel</th>
+              <th>Kitab</th>
+              <th>Ustadz</th>
+              <th>Hari</th>
+              <th>Pukul</th>
+              <th>Ruang</th>
+              <th>Kelas</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+          @foreach($jadwal as $jp)
+          <!-- @foreach($matpel as $mp) -->
+          @foreach($pengajar as $aj)
+          @foreach($datakelas as $dk)
+          
+            <tr>
+            <td>{{$jp->id}}</td>
+            <td>{{$mp->nama_mapel}}</td>
+            <td>{{$mp->kitab}}</td>
+            <td>{{$aj->nama}}</td>
+            <td>{{$jp->hari}}</td>
+            <td>{{$jp->jam}}</td>
+            <td>{{$dk->nama_kelas}}</td>
+            <td>{{$jp->kelas}}</td>
+            <td><img src="" alt="#"></td>
+            <td>
+                <a href="#" data-toggle="modal" data-target="#ModalEdit" class="icon-edit pr-3">
+                  <i class="fas fa-edit"></i>
+                </a>
+                <a href="#" class="icon-delete">
+                  <i class="fas fa-trash"></i>
+                </a>
+              </td>
+            </tr>
+            <!-- @endforeach -->
+            @endforeach
+            @endforeach
+            @endforeach
+          </tbody>
+        </table>
+      </div>
     </div>
   </nav>
   <div class="container-fluid">

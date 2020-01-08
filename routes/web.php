@@ -24,15 +24,20 @@ Route::group(['middleware' => ['auth', 'checkRole:Santri,Pegawai,Admin,Superadmi
     Route::get('/absensi', function () {
         return view('akademik.absensi');
     });
-    Route::get('/data_kelas', function () {
-        return view('akademik.data_kelas');
-    });
-    Route::get('/jadwal_pelajaran', function () {
-        return view('akademik.jadwal_pelajaran');
-    });
-    Route::get('/mata_pelajaran', function () {
-        return view('akademik.mata_pelajaran');
-    });
+    Route::get('/data_kelas','DatakelasController@index');
+    Route::post('/data_kelas/store','DatakelasController@store');
+    Route::get('/data_kelas/hapus/{id}', 'DatakelasController@hapus'); 
+    Route::get('/data_kelas/update/', 'DatakelasController@update');
+  
+    Route::get('/jadwal_pelajaran','JadwalController@index');
+    Route::post('/jadwal_pelajaran/store','JadwalController@store');
+    Route::get('/jadwal_pelajaran/hapus/{id}', 'JadwalController@hapus'); 
+    Route::get('/jadwal_pelajaran/update/', 'JadwalController@update'); 
+  
+    Route::get('/mata_pelajaran','MatpelController@index');
+    Route::post('/mata_pelajaran/store','MatpelController@store');
+    Route::get('/mata_pelajaran/hapus/{id}', 'MatpelController@hapus'); 
+    Route::get('/mata_pelajaran/update/', 'MatpelController@update'); 
     Route::get('/penilaian', function () {
         return view('akademik.penilaian');
     });
@@ -64,7 +69,6 @@ Route::group(['middleware' => ['auth', 'checkRole:Santri,Pegawai,Admin,Superadmi
 
 // ==================== kepegawaian ====================
 //pegawai
-
 Route::group(['middleware' => ['auth', 'checkRole:Pegawai,Admin,Superadmin']], function () {
 
     Route::get('/data_pegawai', 'PegawaiController@index');
@@ -91,6 +95,7 @@ Route::get('/superadmin', function () {
 
 //===================== pembayaran ======================
 
+
 Route::group(['middleware' => ['auth', 'checkRole:Santri,Pegawai,Admin,Superadmin']], function () {
 
   Route::get('/laporan_pembayaran', 'KeuanganController@index');
@@ -100,7 +105,6 @@ Route::group(['middleware' => ['auth', 'checkRole:Santri,Pegawai,Admin,Superadmi
   //     return view('pembayaran.pembayaran');
   // });
 });
-
 
 //===================== Pendaftaran ======================
 
